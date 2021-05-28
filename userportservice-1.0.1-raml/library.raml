@@ -1,0 +1,9 @@
+#%RAML 1.0 Library
+usage:
+types:
+  userType: !include type/user.raml
+  usersType: !include type/users.raml
+securitySchemes:
+  security: !include securityScheme.raml
+traits:
+  404statusCode: !include traits/404statusCode.raml

@@ -1,0 +1,85 @@
+#%RAML 1.0
+title: UserPortService
+version: 1
+mediaType: 
+- application/json
+uses:
+  lib: library.raml
+  
+/users:
+  get:
+    description: 
+    responses:
+      200:
+        body:
+          application/json:
+            type: lib.usersType []
+            example: !include Example/users.raml
+  is:
+    - lib.404statusCode
+  
+  /{userID}:
+  
+    post:
+      body:
+        application/json:
+          example:
+            {
+              "fist": jane,
+            "last": smith,
+            "department": "sales"
+            }
+      responses:
+        201:
+          body:
+            application/json:
+              example:
+                {
+                  "id": 125
+                }  
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              type: !include type/user.raml
+              example: !include Example/user.raml
+      is:
+      - lib.404statusCode
+    put:
+      body:
+        application/json:
+          example: !include Example/user.raml
+      responses:
+        201:
+          body:
+            application/json:
+              example:
+                {
+                  "msg": "user updated"
+                }  
+    delete:
+      body:
+        application/json:
+          example:
+            {
+              "id": 126
+            }
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                {
+                  "msg": "user deleted"
+                }
+        
+
+          
+
+  
+  
+
+    
+
+              
